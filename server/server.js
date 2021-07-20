@@ -4,6 +4,7 @@ import mongoose from 'mongoose';
 import dotenv from 'dotenv';
 
 import newUser from './models/user.js';
+import newProduct from './models/product.js';
 
 dotenv.config();
 
