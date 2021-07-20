@@ -1,7 +1,22 @@
 import express from 'express'; // Http requests
 import morgan from 'morgan';  // Logger for http
+import mongoose from 'mongoose';
+import dotenv from 'dotenv';
+
+dotenv.config();
 
 const app = express();
+
+mongoose.connect(
+	process.env.DATABASE, // To protect the sensitive information
+	{ useNewUrlParser: true, useUnifiedTopology: true },
+	(err) => {
+	if (err) {
+		console.log(err);
+	} else {
+		console.log('Connected to the Database');
+	};
+});
 
 // Middlewares
 app.use(morgan('dev'));
