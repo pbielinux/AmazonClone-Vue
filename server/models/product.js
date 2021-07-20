@@ -13,6 +13,6 @@ const ProductSchema = new Schema({
 	rating: [ Number ]
 });
 
-const newProduct = mongoose.model('Product', ProductSchema);
+const ProductModel = mongoose.model('Product', ProductSchema);
 
-export default newProduct;
+export default ProductModel;
