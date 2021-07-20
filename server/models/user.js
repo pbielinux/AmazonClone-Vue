@@ -10,4 +10,6 @@ const UserSchema = new Schema({
 });
 
 // Export the UserSchema - A BluePrint of user object
-module.exports = mongoose.model('User', UserSchema);
+const newUser = mongoose.model('User', UserSchema);
+
+export default newUser;

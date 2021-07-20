@@ -3,12 +3,14 @@ import morgan from 'morgan';  // Logger for http
 import mongoose from 'mongoose';
 import dotenv from 'dotenv';
 
+import newUser from './models/user.js';
+
 dotenv.config();
 
 const app = express();
 
 mongoose.connect(
-	process.env.DATABASE, // To protect the sensitive information
+	process.env.DATABASE, // T o protect the sensitive information
 	{ useNewUrlParser: true, useUnifiedTopology: true },
 	(err) => {
 	if (err) {
@@ -30,7 +32,18 @@ app.get('/', (request, response) => {
 
 // POST - Send data from front to backend
 app.post('/', (request, response) => {
-	console.log(request.body.name);
+	let user = new newUser();
+	user.name = request.body.name;
+	user.email = request.body.email;
+	user.password = request.body.password;
+
+	user.save((err) => {
+		if (err) {
+			response.json(err);
+		} else {
+			response.json('successfully saved');
+		};
+	});
 });
 
 app.listen(3333, (err) => {
