@@ -3,6 +3,8 @@ import morgan from 'morgan';  // Logger for http
 import mongoose from 'mongoose';
 import dotenv from 'dotenv';
 import productRouter from './routes/product.js';
+import categoryRouter from './routes/category.js';
+import ownerRouter from './routes/owner.js';
 
 dotenv.config();
 
@@ -26,6 +28,8 @@ app.use(express.urlencoded({ extended: false }));
 
 // require APIs
 app.use('/api', productRouter);
+app.use('/api', categoryRouter);
+app.use('/api', ownerRouter);
 
 app.listen(3333, (err) => {
 	if (err) {
