@@ -1,5 +1,6 @@
 import express from 'express';
 import ProductModel from '../models/product.js';
+import Upload from '../middlewares/upload-photo.js'
 
 const router = express.Router();
 
@@ -14,12 +15,12 @@ const router = express.Router();
 	rating: [ Number ] */
 
 // POST request - create a new product
-router.post('/products', async (request, response) => {
+router.post('/products', Upload.single('photo'), async (request, response) => {
 	try {
 		let product = new ProductModel();
 		product.title = request.body.title;
 		product.description = request.body.description;
-		product.photo = request.body.photo;
+		product.photo = request.file.location;
 		product.stockQuantity = request.body.stockQuantity;
 
 		await product.save();
