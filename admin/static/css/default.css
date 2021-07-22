@@ -100,11 +100,11 @@ label, legend {
     font-weight: 700;
     font-family: "MyWebFont",Arial,sans-serif;
 }
-.a-input-text, 
-input[type=number], 
-input[type=tel], 
-input[type=password], 
-input[type=date], 
+.a-input-text,
+input[type=number],
+input[type=tel],
+input[type=password],
+input[type=date],
 input[type=email] {
     background-color: #fff;
     height: 31px;
@@ -112,12 +112,12 @@ input[type=email] {
     line-height: normal;
     color: #111;
 }
-.a-input-text, 
-input[type=text], 
-input[type=number], 
-input[type=tel], 
-input[type=password], 
-input[type=search], 
+.a-input-text,
+input[type=text],
+input[type=number],
+input[type=tel],
+input[type=password],
+input[type=search],
 textarea {
     border: 1px solid #a6a6a6;
     border-top-color: #949494;
@@ -125,19 +125,19 @@ textarea {
     box-shadow: 0 1px 0 rgba(255,255,255,.5), 0 1px 0 rgba(0,0,0,.07) inset;
     outline: 0;
 }
-.a-input-text.a-form-focus, 
-.a-input-text:focus, 
-input[type=text].a-form-focus, 
-input[type=text]:focus, 
-input[type=number].a-form-focus, 
-input[type=number]:focus, 
-input[type=tel].a-form-focus, 
-input[type=tel]:focus, 
-input[type=password].a-form-focus, 
-input[type=password]:focus, 
-input[type=search].a-form-focus, 
-input[type=search]:focus, 
-textarea.a-form-focus, 
+.a-input-text.a-form-focus,
+.a-input-text:focus,
+input[type=text].a-form-focus,
+input[type=text]:focus,
+input[type=number].a-form-focus,
+input[type=number]:focus,
+input[type=tel].a-form-focus,
+input[type=tel]:focus,
+input[type=password].a-form-focus,
+input[type=password]:focus,
+input[type=search].a-form-focus,
+input[type=search]:focus,
+textarea.a-form-focus,
 textarea:focus {
     border-color: #e77600;
     box-shadow: 0 0 3px 2px rgba(228,121,17,.5);
@@ -324,7 +324,7 @@ input[type=password]::placeholder{
   display: inline-block;
   -webkit-transition: box-shadow .4s ease, background .4s ease;
   transition: box-shadow .4s ease, background .4s ease;
-  border: 0;
+  border: 1;
   border-radius: 4px;
   box-shadow: inset 0 0 0 1px #FFFFFF;
   background: #FFFFFF;
@@ -346,12 +346,13 @@ input[type=password]::placeholder{
 }
 
 .sbx-amazon__input:hover {
-  box-shadow: inset 0 0 0 1px #e6e6e6;
+	border: 0;
+  box-shadow: inset 0 0 0 1px #ffbf58;
 }
 
 .sbx-amazon__input:focus, .sbx-amazon__input:active {
   outline: 0;
-  box-shadow: inset 0 0 0 1px #FFBF58;
+ 	box-shadow: 0 0 3px 2px rgba(228,121,17,.5);
   background: #FFFFFF;
 }
 
@@ -527,7 +528,7 @@ header form input{
 .nav-global-location .nav-a-2 {
     padding-right: 0;
     overflow: hidden;
-    top: 1px;	
+    top: 1px;
     border: 1px solid transparent;
     display: inline-block;
     box-sizing: border-box;
@@ -659,7 +660,7 @@ header form input{
     text-decoration: none;
     margin: 0 0px 10px 0;
     border-color: rgba(255,255,255,.2);
-}	
+}
 @media(max-width: 1215px){
   .nav-xshop a:nth-child(6){
     display: none
@@ -1512,7 +1513,7 @@ ul li.a-breadcrumb-divider {
     text-decoration: none;
     padding-left: 11px;
     font-size: 13px;
-    font-family: "MyWebFont",Arial,sans-serif; 
+    font-family: "MyWebFont",Arial,sans-serif;
 }
 .readMore a span:hover{
     text-decoration: underline;
@@ -1566,7 +1567,7 @@ ul li.a-breadcrumb-divider {
     padding: 0 18px 0 45px;
     position: relative;
 }
-.a-icon-radio-active, 
+.a-icon-radio-active,
 .a-icon-radio-inactive {
     left: 17px;
     margin-top: -10px;
@@ -1675,7 +1676,7 @@ ul li.a-breadcrumb-divider {
     margin-bottom: 20px;
     font-size: 21px!important;
     line-height: 1.3!important;
-    font-family: "MyWebFont",Arial,sans-serif; 
+    font-family: "MyWebFont",Arial,sans-serif;
 }
 .moreItemsHeaderRow h2{
     line-height: inherit;
@@ -1877,11 +1878,11 @@ a.kicsPopover span {
     color: #c45500;
 }
 .authorContent{
-    padding: .5em 0 0 25px;   
+    padding: .5em 0 0 25px;
 }
 @media(max-width: 564px){
   .authorContent{
-    padding: 0px;   
+    padding: 0px;
 }
 }
 .authorImageSingle {
@@ -1978,7 +1979,7 @@ a.kicsPopover span {
 }
 .cr-widget-ACR span{
     font-size: 13px!important;
-    line-height: 19px!important; 
+    line-height: 19px!important;
 }
 .cr-widget-ACR span a{
     text-decoration: none;
@@ -2148,7 +2149,7 @@ a.kicsPopover span {
 .a-dropdown-container {
     position: relative;
 }
-.a-native-dropdown, 
+.a-native-dropdown,
 .a-native-splitdropdown {
     position: absolute;
     z-index: -1;
@@ -2688,9 +2689,9 @@ button, input, textarea {
 .sign-in-tooltip-new-customer{
   font-size: 11px;
 }
-.action-button, 
-a.action-button:active, 
-a.action-button:hover, 
+.action-button,
+a.action-button:active,
+a.action-button:hover,
 a.action-button:link{
     max-width: 230px;
     text-decoration: none;
@@ -2701,10 +2702,10 @@ a.action-button:link{
     background-position: -10px -170px;
     background-image: url("../img/btn-bg.png");
 }
-.action-inner, 
-a.action-button:active .action-inner, 
-a.action-button:hover .action-inner, 
-a.action-button:link .action-inner, 
+.action-inner,
+a.action-button:active .action-inner,
+a.action-button:hover .action-inner,
+a.action-button:link .action-inner,
 a.action-button:visited .action-inner {
     cursor: pointer;
     background-position: right -170px;
@@ -2789,7 +2790,7 @@ a.action-button:visited .action-inner {
     text-align: center;
     margin: 30px auto 15px;
 }
-.navFooterPadItemLine a, 
+.navFooterPadItemLine a,
 .navFooterPadItemLine span {
     padding: 0 .6em;
 }
@@ -3116,7 +3117,7 @@ input[type=checkbox] {
     position: relative;
     bottom: -3px;
 }
-.a-checkbox-label, 
+.a-checkbox-label,
 .a-radio-label {
     position: relative;
     padding-left: 0px;
@@ -3400,7 +3401,7 @@ p a:link {
 .s-layout-picker .s-layout-picker-last-col {
     border-right: 0;
 }
-.s-layout-picker .s-layout-picker-selected, 
+.s-layout-picker .s-layout-picker-selected,
 .s-layout-toggle-picker a:hover .s-layout-picker-inner {
     background-color: #e47911;
 }
@@ -3594,7 +3595,7 @@ div.pagnHy .pagnDisabled {
     padding: 0 5px;
     white-space: nowrap;
 }
-div.pagnHy .pagnRA, 
+div.pagnHy .pagnRA,
 div.pagnHy .pagnRA1 {
     font-weight: 700;
     text-align: right;
@@ -3750,7 +3751,7 @@ input[type=submit] {
     border-bottom: 1px solid #DDD;
 }
 .sc-list-body img{
- 
+
 }
 .sc-list-body a,
 .sc-list-body a:active,
@@ -4173,7 +4174,7 @@ fieldset {
   }
 }
 
-.a-box-group>.a-box.a-first, 
+.a-box-group>.a-box.a-first,
 .a-box-group>.a-box.a-first .a-box-inner {
     -webkit-border-radius: 4px 4px 0 0;
     -moz-border-radius: 4px 4px 0 0;
@@ -4655,7 +4656,7 @@ fieldset {
 .orderContent{
   border: 1px solid #ddd;
   border-radius: 3px;
-  
+
 }
 .orderContentHeader{
   border-bottom: 1px solid #ddd;
