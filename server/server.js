@@ -5,6 +5,7 @@ import dotenv from 'dotenv';
 import productRouter from './routes/product.js';
 import categoryRouter from './routes/category.js';
 import ownerRouter from './routes/owner.js';
+import cors from 'cors';
 
 dotenv.config();
 
@@ -22,6 +23,7 @@ mongoose.connect(
 });
 
 // Middlewares
+app.use(cors());
 app.use(morgan('dev'));
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));

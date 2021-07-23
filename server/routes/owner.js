@@ -39,7 +39,7 @@ router.get('/owners', async (request, response) => {
 
 		response.json({
 			success: true,
-			product: owners
+			owners: owners
 		});
 
 	} catch (err) {
