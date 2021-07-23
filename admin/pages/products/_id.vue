@@ -6,7 +6,7 @@
 				<div class="col-sm-6">
 					<section class="a-section">
 						<div class="a-spacing-top-medium"></div>
-						<h2 style="text-align: center">Add a new product</h2>
+						<h2 style="text-align: center">Update - {{ product.title }}</h2>
 						<form>
 							<!-- Category Dropdown -->
 							<div class="a-spacing-top-medium">
@@ -16,7 +16,6 @@
 									name="category"
 									id="categorySelector"
 									class="a-select-option">
-									<option value="0">Select the product category</option>
 									<option
 										v-for="category in categories"
 										:value="category._id"
@@ -34,7 +33,6 @@
 									name="owner"
 									id="ownerSelector"
 									class="a-select-option">
-									<option value="0">Select the product owner</option>
 									<option
 										v-for="owner in owners"
 										:value="owner._id"
@@ -49,6 +47,7 @@
 								<label style="margin-bottom: 0px;">Title</label>
 								<input
 									v-model="title"
+									:placeholder="product.title"
 									type="text"
 									class="a-input-text"
 									style="width: 100%">
@@ -69,6 +68,7 @@
 								<label style="margin-bottom: 0px;">Stock Quantity</label>
 								<input
 									v-model="stockQuantity"
+									:placeholder="product.stockQuantity"
 									type="text"
 									class="a-input-text"
 									style="width: 100%">
@@ -79,12 +79,12 @@
 								<label style="margin-bottom: 0px;">Description</label>
 								<textarea
 									v-model="description"
+									:placeholder="product.description"
 									class="sbx-amazon__input"
 									name="description"
 									id="descriptionInput"
 									cols="30"
 									rows="6"
-									placeholder="Provide details such as a product description."
 									>
 								</textarea>
 							</div>
@@ -113,9 +113,9 @@
 								<span class="a-button-register">
 									<span class="a-button-inner">
 										<span
-											@click="onAddProduct"
+											@click="onUpdateProduct"
 											class="a-button-text">
-											Add product
+											Update product
 										</span>
 									</span>
 								</span>
@@ -134,20 +134,33 @@
 <script>
 export default {
 	// asyncData is processed on server-side - Use for API Calls
-	async asyncData({ $axios }) {
+	async asyncData({ $axios, params }) {
 		try {
 			let categories = $axios.$get("http://localhost:3333/api/categories");
 			let owners = $axios.$get("http://localhost:3333/api/owners");
+			let product = $axios.$get(`http://localhost:3333/api/products/${ params.id }`);
 
 			// Promise.all runs both APIs at the same time
-			const [ categoriesResponse, ownersResponse ] = await Promise.all([
+			const [ categoriesResponse, ownersResponse, productResponse ] = await Promise.all([
 				categories,
-				owners
+				owners,
+				product
 			]);
+
+			console.log(productResponse);
 
 			return {
 				categories: categoriesResponse.categories,
-				owners: ownersResponse.owners
+				owners: ownersResponse.owners,
+				product: productResponse.product,
+
+				price: productResponse.product.price,
+				description: productResponse.product.description,
+				title: productResponse.product.title,
+				stockQuantity: productResponse.product.stockQuantity,
+				ownerID: productResponse.product.owner,
+				categoryID: productResponse.product.category,
+
 			};
 		} catch (err) {
 			console.error(err);
@@ -161,9 +174,8 @@ export default {
 			categoryID: null,
 			ownerID: null,
 			title: "",
-			price: 0,
 			description: "",
-			stockQuantity: 1,
+			stockQuantity: "",
 			selectedFile: null,
 			fileName: ""
 		}
@@ -176,7 +188,7 @@ export default {
 			this.fileName = event.target.files[0].name;
 		},
 
-		async onAddProduct() {
+		async onUpdateProduct() {
 			let data = new FormData();
 			data.append('title', this.title);
 			data.append('price', this.price);
@@ -186,8 +198,8 @@ export default {
 			data.append('categoryID', this.categoryID);
 			data.append('photo', this.selectedFile, this.selectedFile.name);
 
-			let result = await this.$axios.$post(
-				"http://localhost:3333/api/products",
+			let response = await this.$axios.$put(
+				`http://localhost:3333/api/products/${this.$route.params.id}`,
 				data
 			);
 
