@@ -3,8 +3,8 @@ import mongoose from 'mongoose';
 const Schema = mongoose.Schema;
 
 const ProductSchema = new Schema({
-	category: { type: Schema.Types.ObjectId, ref: 'Category' },
-	owner: { type: Schema.Types.ObjectId, ref: 'Owner' },
+	category: { type: Schema.Types.ObjectId, ref: 'category' },
+	owner: { type: Schema.Types.ObjectId, ref: 'owner' },
 	title: String,
 	description: String,
 	photo: String,
@@ -13,6 +13,6 @@ const ProductSchema = new Schema({
 	rating: [ Number ]
 });
 
-const ProductModel = mongoose.model('Product', ProductSchema);
+const ProductModel = mongoose.model('product', ProductSchema);
 
 export default ProductModel;

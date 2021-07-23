@@ -23,9 +23,10 @@ router.post('/products', Upload.single('photo'), async (request, response) => {
 		product.price = request.body.price;
 		product.photo = request.file.location;
 		product.stockQuantity = request.body.stockQuantity;
-		product.ownerID = request.body.ownerID;
-		product.categoryID = request.body.categoryID;
+		product.owner = request.body.ownerID;
+		product.category = request.body.categoryID;
 
+		console.log(product);
 		await product.save();
 
 		response.json({

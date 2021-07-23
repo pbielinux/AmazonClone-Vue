@@ -78,6 +78,7 @@
 							<div class="a-spacing-top-medium">
 								<label style="margin-bottom: 0px;">Description</label>
 								<textarea
+									v-model="description"
 									class="sbx-amazon__input"
 									name="description"
 									id="descriptionInput"

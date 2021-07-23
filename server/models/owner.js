@@ -8,6 +8,6 @@ const OwnerSchema = new Schema({
 	photo: String
 });
 
-const OwnerModel = mongoose.model('Owner', OwnerSchema);
+const OwnerModel = mongoose.model('owner', OwnerSchema);
 
 export default OwnerModel;
