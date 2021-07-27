@@ -37,6 +37,15 @@ UserSchema.pre('save', function(next) {
 	};
 });
 
+// Attach Password compare method to the UserSchema
+UserSchema.methods.comparePassword = function (password, next) {
+	// .this refers to user itself
+	let user = this;
+
+	// Compare the passed Password to the one in the DB
+	return bcrypt.compareSync(password, user.password);
+};
+
 // Export the UserSchema - A BluePrint of user object
 const UserModel = mongoose.model('user', UserSchema);
 
