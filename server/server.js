@@ -5,6 +5,7 @@ import dotenv from 'dotenv';
 import productRouter from './routes/product.js';
 import categoryRouter from './routes/category.js';
 import ownerRouter from './routes/owner.js';
+import userRouter from './routes/auth.js';
 import cors from 'cors';
 
 dotenv.config();
@@ -21,6 +22,11 @@ mongoose.connect(
 		console.log('Connected to the Database');
 	};
 });
+// Mongoose sets to remove the deprecation message
+mongoose.set('useNewUrlParser', true);
+mongoose.set('useFindAndModify', false);
+mongoose.set('useCreateIndex', true);
+
 
 // Middlewares
 app.use(cors());
@@ -32,6 +38,7 @@ app.use(express.urlencoded({ extended: false }));
 app.use('/api', productRouter);
 app.use('/api', categoryRouter);
 app.use('/api', ownerRouter);
+app.use('/api', userRouter);
 
 app.listen(3333, (err) => {
 	if (err) {
