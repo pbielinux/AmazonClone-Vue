@@ -82,7 +82,7 @@
 							<!-- Account and Lists -->
 							<template v-if="$auth.$state.loggedIn">
 								<nuxt-link
-									to="/signup"
+									to="/profile"
 									class="nav-a nav-a-2"
 									id="nav-link-accountList"
 									tabindex="0">

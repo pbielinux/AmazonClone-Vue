@@ -106,4 +106,29 @@ router.post("/auth/login", async (request, response) => {
 	};
 });
 
+// Update profile
+router.put("/auth/user", verifyToken, async(request, response) => {
+	try {
+		let foundUser = await UserModel.findOne({ _id: request.decoded._id });
+
+		if (foundUser) {
+			if (request.body.name) foundUser.name = request.body.name;
+			if (request.body.email) foundUser.email = request.body.name;
+			if (request.body.password) foundUser.password = request.body.password;
+
+			await foundUser.save();
+
+			response.json({
+				success: true,
+				Message: "Successfully updated user"
+			});
+		};
+	} catch (err) {
+		response.status(500).json({
+			success: false,
+			message: "Authentication failed, Wrong password!"
+		});
+	}
+});
+
 export default router;

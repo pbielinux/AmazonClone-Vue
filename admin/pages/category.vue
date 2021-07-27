@@ -17,6 +17,7 @@
 									class="a-input-text"
 									style="width: 100%"
 								>
+							</div>
 
 							<!-- Button -->
 							<hr/>
@@ -30,7 +31,6 @@
 										</span>
 									</span>
 								</span>
-							</div>
 							</div>
 						</form>
 						<br>
