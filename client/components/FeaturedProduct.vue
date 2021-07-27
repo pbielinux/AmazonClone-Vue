@@ -23,6 +23,7 @@
 					<div class="bx-root-dtls">
 						<div class="bx-root-heading">Xbox Series S</div>
 					</div>
+					<br>
 					<div class="bx-root-subtext">
 						The Newest Xbox Console: Introducing the Xbox Series S, the smallest, sleekest Xbox console ever
 					</div>

@@ -117,9 +117,9 @@
           <div class="navFooterPadItem row">
             <div class="col-md-4 col-sm-12 text-right">
               <div class="navFooterLogoLine">
-                <a href="#">
+                <nuxt-link to="/">
                   <div class="nav-logo-base nav-sprite"></div>
-                </a>
+                </nuxt-link>
               </div>
             </div>
             <div class="col-md-8 col-sm-12">
