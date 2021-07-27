@@ -9,12 +9,12 @@ const verifyToken = function (request, response, next) {
 	// Sometimes the frontend attach "Bearer " before the token
 	let checkBearer = "Bearer ";
 
-	// 2. If "Bearer " is attached, remove it
-	if (token.startsWith(checkBearer)) {
-		token = token.slice(checkBearer.length, token.length);
-	};
-	// 3.1 if the token exist ...
+	// 2.1 if the token exist ...
 	if (token) {
+		// 3. If "Bearer " is attached, remove it
+		if (token.startsWith(checkBearer)) {
+			token = token.slice(checkBearer.length, token.length);
+		};
 		// 4. Verify the token with the SECRET key
 		jwt.verify(token, process.env.SECRET, (err, decoded) => {
 			// 5.1 If fails, return error
@@ -26,11 +26,11 @@ const verifyToken = function (request, response, next) {
 			// 5.2 If the token is correct, use the decoded token
 			} else {
 				request.decoded = decoded;
-				// 6 Operation is done, move on!
+				// 6. Operation is done, move on!
 				next();
 			};
 		});
-	} else { // 3.2 If the token does not exist...
+	} else { // 2.2 If the token does not exist...
 		response.json({
 			success: false,
 			message: "No Token provided"

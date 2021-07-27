@@ -1,13 +1,14 @@
 import express from 'express';
 import jwt from 'jsonwebtoken';
 import UserModel from '../models/user.js';
+import verifyToken from '../middlewares/verify-token.js'
 import dotenv from 'dotenv';
 
 dotenv.config();
 
 const router = express.Router();
 
-// Signup Router
+// Signup Route
 router.post("/auth/signup", async (request, response) => {
 	// 1. Check is email or password of the body is empty
 	if (!request.body.email || !request.body.password) {
@@ -44,6 +45,25 @@ router.post("/auth/signup", async (request, response) => {
 			});
 		}
 	};
+});
+
+// Profile Route
+router.get("/auth/user", verifyToken, async (request, response) => {
+	try {
+		let foundUser = await UserModel.findOne({ _id: request.decoded._id});
+
+		if (foundUser) {
+			response.json({
+				success: true,
+				user: foundUser
+			});
+		}
+	} catch (err) {
+		response.json({
+			success: false,
+			message: err.message
+		});
+	}
 });
 
 export default router;
