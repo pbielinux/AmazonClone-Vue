@@ -69,25 +69,29 @@ router.get("/auth/user", verifyToken, async (request, response) => {
 // Login Router
 router.post("/auth/login", async (request, response) => {
 	try {
-		// Check if the user email exists on the DB
+		// 1. Check if the user email exists on the DB
 		let foundUser = await UserModel.findOne({ email: request.body.email });
 
+		// 2.1 If the user does not exist on DB, response error
 		if (!foundUser) {
 			response.status(403).json({
 				success: false,
 				message: "Authentication failed, User not found"
 			});
-		} else {
+		} else { // 2.2 If the user exists ...
+			// 3.1 Check if the password is correct
 			if (foundUser.comparePassword(request.body.password)) {
+				// 4. Wrap the user object in a token
 				let token = jwt.sign(foundUser.toJSON(), process.env.SECRET, {
 					expiresIn: 604800		// 1 week
 				});
 
+				// 5. Finally response and store the token in the browser
 				response.json({
 					success: true,
 					token: token
 				});
-			} else {
+			} else { // 3.2 If the password is not correct, response error
 				response.status(403).json({
 					success: false,
 					message: "Authentication failed, Wrong password!"
