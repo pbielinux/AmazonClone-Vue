@@ -1,5 +1,6 @@
 import express from 'express';
 import ReviewModel from '../models/review.js';
+import ProductModel from '../models/product.js';
 import Upload from '../middlewares/upload-photo.js'
 import VerifyToken from '../middlewares/verify-token.js';
 
@@ -16,8 +17,8 @@ router.post(
 			review.headline = request.body.headline;
 			review.body = request.body.body;
 			review.rating = request.body.rating;
-			review.photo = request.file.photo; // From S3
-			review.user = request.decoded._id; // From the token
+			review.photo = request.file.location;
+			review.user = request.decoded._id;
 			review.productID = request.params.productID;
 
 			await ProductModel.update({ $push: review._id });
