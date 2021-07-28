@@ -1,7 +1,7 @@
 import express from 'express';
 import jwt from 'jsonwebtoken';
 import UserModel from '../models/user.js';
-import verifyToken from '../middlewares/verify-token.js'
+import VerifyToken from '../middlewares/verify-token.js';
 import dotenv from 'dotenv';
 
 dotenv.config();
@@ -48,7 +48,7 @@ router.post("/auth/signup", async (request, response) => {
 });
 
 // Profile Route
-router.get("/auth/user", verifyToken, async (request, response) => {
+router.get("/auth/user", VerifyToken, async (request, response) => {
 	try {
 		let foundUser = await UserModel.findOne({ _id: request.decoded._id});
 
@@ -107,7 +107,7 @@ router.post("/auth/login", async (request, response) => {
 });
 
 // Update profile
-router.put("/auth/user", verifyToken, async(request, response) => {
+router.put("/auth/user", VerifyToken, async(request, response) => {
 	try {
 		let foundUser = await UserModel.findOne({ _id: request.decoded._id });
 

@@ -2,10 +2,15 @@ import mongoose from 'mongoose';
 
 const Schema = mongoose.Schema;
 
-const CategorySchema = new Schema({
-	type: { type: String, unique: true, require: true }
+const ReviewSchema = new Schema({
+	headline: String,
+	body: String,
+	rating: Number,
+	photo: String,
+	productID: { type: Schema.Types.ObjectId, ref: 'product'},
+	user: { type: Schema.Types.ObjectId, ref: 'user'}
 });
 
-const CategoryModel = mongoose.model('category', CategorySchema);
+const ReviewModel = mongoose.model('review', ReviewSchema);
 
-export default CategoryModel;
+export default ReviewModel;

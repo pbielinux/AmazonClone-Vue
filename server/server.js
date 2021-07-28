@@ -6,6 +6,7 @@ import productRouter from './routes/product.js';
 import categoryRouter from './routes/category.js';
 import ownerRouter from './routes/owner.js';
 import userRouter from './routes/auth.js';
+import reviewRouter from './routes/review.js';
 import cors from 'cors';
 
 dotenv.config();
@@ -39,6 +40,7 @@ app.use('/api', productRouter);
 app.use('/api', categoryRouter);
 app.use('/api', ownerRouter);
 app.use('/api', userRouter);
+app.use('/api', reviewRouter);
 
 app.listen(3333, (err) => {
 	if (err) {
