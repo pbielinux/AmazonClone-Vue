@@ -156,8 +156,9 @@ export default {
 					data
 				);
 
+				console.log(response);
 				if (response.success) {
-					this.$route.push(`/products/${params.id}`);
+					this.$router.push(`/products/${this.$route.params.id}`);
 				};
 			} catch (err) {
 				console.log(err);

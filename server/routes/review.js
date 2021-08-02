@@ -21,7 +21,7 @@ router.post(
 			review.user = request.decoded._id;
 			review.productID = request.params.productID;
 
-			await ProductModel.update({ $push: review._id });
+			await ProductModel.updateOne({ $push: { rating: review._id }});
 
 			const savedReview = await review.save();
 
@@ -45,7 +45,7 @@ router.post(
 router.get("/reviews/:productID", async (request, response) => {
 	try {
 		const productReviews = await ReviewModel.find({
-			productID: req.params.productID
+			productID: request.params.productID
 		})
 			.populate("user")
 			.exec();

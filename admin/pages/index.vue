@@ -28,8 +28,8 @@
 				>
 					<div class="history-box">
 						<!-- Product image -->
-						<a href="#" class="a-link-normal">
-							<div style="height: 220px; display: flex; align-items: center">
+						<a href="#" class="a-link-normal" style="display: flex; align-items: center; justify-content: center;">
+							<div style="max-width: 220px;">
 								<img :src="product.photo" alt="Product image" class="img-fluid">
 							</div>
 						</a>

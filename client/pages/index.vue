@@ -16,6 +16,7 @@
 							<li
 								v-for="product in products" :key="product._id"
 								class="s-result-item celwidget">
+								<nuxt-link :to="`/products/${product._id}`" style="text-decoration: none;">
 								<div class="s-item-container">
 									<!-- Best Seller -->
 									<div class="a-spacing-micro">
@@ -111,6 +112,7 @@
 										</div>
 									</div>
 								</div>
+								</nuxt-link>
 							</li>
 						</ul>
 					</div>
