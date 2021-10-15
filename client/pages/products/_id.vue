@@ -361,7 +361,6 @@
 				</div>
 
 				<ReviewSection :product="product" :reviews="reviews"/>
-
 			</div>
 		</div>
 

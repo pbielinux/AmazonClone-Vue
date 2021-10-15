@@ -52,7 +52,7 @@ hr {
     margin-bottom: 14px;
 }
 .fas,.far{
-    color: #ffb300 !important;
+    color: #ffb300;
     font-size: 14px !important;
 }
 
@@ -2893,14 +2893,7 @@ div.navFooterLine {
 .icp-color-base{
     color: #CCC;
 }
-.nav-arrow.icp-up-down-arrow {
-    background: url(https://m.media-amazon.com/images/G/01/AUIClients/InternationalCustomerPref…ncesNavAssets-icp_sprite-7d1bfde…._V2_.png);
-    width: 12px;
-    height: 12px;
-    background-position: -77px -80px;
-    position: relative;
-    left: 12px;
-}
+
 .icp-currency-symbol {
     color: #fff;
     padding: 0;
@@ -4720,4 +4713,51 @@ fieldset {
 }
 .orderContentFooter{
   padding: 10px 14px;
+}
+
+.banner {
+	display: block;
+	position: fixed;
+	bottom: 0;
+	background-color: #232f3e;
+	opacity: 0.9;
+	width: 100vw;
+	height: 90px;
+}
+
+.banner .container {
+	display: flex;
+	flex-direction: column;
+	position: relative;
+	margin-top: 10px;
+	justify-content: center;
+}
+
+.banner .container p{
+	color: #fff;
+	font-size: 14px;
+	text-align: center;
+	width: fit-content;
+}
+
+.banner .container h4{
+	color: #f1a71c;
+	font-size: 20px;
+	text-align: center;
+}
+
+.banner .container .row {
+	display: flex;
+	flex-direction: row;
+	position: relative;
+	margin-top: 10px;
+	justify-content: flex-end;
+}
+
+.icon {
+	color: #fff;
+	position: absolute;
+	right: 30px;
+	top: 15px;
+	z-index: 99;
 }

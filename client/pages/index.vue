@@ -119,6 +119,15 @@
 				</div>
 			</div>
 		</div>
+		<div>
+		<div v-if="!isHidden" class="banner">
+			<i @click="isHidden = true" class="icon fas fa-times"></i>
+			<div class="container">
+				<h4>Atention</h4>
+				<p>This is a portfolio project made for skills demonstration purposes. It isn't reated to Amazon.com by any forms.</p>
+			</div>
+		</div>
+	</div>
 	</main>
 </template>
 
@@ -128,6 +137,12 @@ import FeaturedProduct from "~/components/FeaturedProduct";
 export default {
 	components: {
 		FeaturedProduct
+	},
+
+	data () {
+		return {
+			isHidden: false,
+		}
 	},
 
 	async asyncData({ $axios }) {
